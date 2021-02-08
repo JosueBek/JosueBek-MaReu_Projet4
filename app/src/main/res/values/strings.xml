@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ma Réu</string>
+    <string name="searchFilter">searchFilter</string>
+    <string name="filterMenu">filterMenu</string>
 </resources>

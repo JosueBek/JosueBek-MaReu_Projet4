@@ -1,10 +1,12 @@
-package com.lamzone.mareu;
+package com.lamzone.mareu.ui.meeting_list;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.lamzone.mareu.R;
+
+public class MeetingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
