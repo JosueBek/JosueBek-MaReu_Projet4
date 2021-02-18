@@ -5,7 +5,7 @@
     <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_search_24"
-        android:title="@string/searchFilter"
+        android:title="searchFilter"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView">
     </item>
@@ -13,7 +13,7 @@
     <item
         android:id="@+id/menu_filter"
         android:icon="@drawable/ic_filter_list_24dp"
-        android:title="@string/filterMenu"
+        android:title="filterMenu"
         app:showAsAction="ifRoom|collapseActionView">
 
     </item>
