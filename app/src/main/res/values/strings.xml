@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Ma Réu</string>
-    <string name="searchFilter">searchFilter</string>
-    <string name="filterMenu">filterMenu</string>
+    <string name="activity_add_meeting">New meeting</string>
+    <string name="meeting_subject">Meeting Subject</string>
+    <string name="meeting_time">Meeting Time</string>
+    <string name="meeting_participants">Meeting Participants</string>
+    <string name="meeting_date">Meeting date</string>
+    <string name="selected_rooms">Selected Rooms</string>
+    <string name="save">Save</string>
+
 </resources>
