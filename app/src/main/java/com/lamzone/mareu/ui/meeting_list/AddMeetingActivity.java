@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -27,6 +26,7 @@ import com.lamzone.mareu.service.MeetingApiService;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,6 +57,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
     private int colors;
     private String color;
     private int year, month, day, mHour, mMinute;
+    private List<String> mails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +88,12 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         mColor.setColorFilter(colors);
         meetingSubject.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -101,7 +104,6 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
 
     @OnClick(R.id.create_meeting)
     void addMeeting() {
-
         Meeting meeting = new Meeting(
                 currentTimeMillis(),
                 colors,
@@ -112,21 +114,21 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
                 meetingDate.getEditText().getText().toString()
         );
 
-            if (meetingSubject.getEditText().getText().toString().trim().isEmpty()) {
-                Toast.makeText(this, "Please Enter Subject", Toast.LENGTH_SHORT).show();
-            } else if (meetingTime.getEditText().getText().toString().trim().isEmpty()) {
-                Toast.makeText(this, "Please Enter Time", Toast.LENGTH_SHORT).show();
-            } else if (meetingDate.getEditText().getText().toString().trim().isEmpty()) {
-                Toast.makeText(this, "Please choose date", Toast.LENGTH_SHORT).show();
-            } else if (!Patterns.EMAIL_ADDRESS.matcher(participants.getEditText().getText().toString()).matches()) {
-                Toast.makeText(this, "Please enter Valid email", Toast.LENGTH_SHORT).show();
-            } else if (meetingPlace.getText().toString().isEmpty()) {
-                Toast.makeText(this, "Please choose rooms", Toast.LENGTH_SHORT).show();
-            } else {
-                apiService.createMeeting(meeting);
-                finish();
-            }
+        if (meetingSubject.getEditText().getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, "Please Enter Subject", Toast.LENGTH_SHORT).show();
+        } else if (meetingTime.getEditText().getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, "Please Enter Time", Toast.LENGTH_SHORT).show();
+        } else if (meetingDate.getEditText().getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, "Please choose date", Toast.LENGTH_SHORT).show();
+        } else if (!Pattern.matches("^((\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)*([,] )*)*$", participants.getEditText().getText().toString())) {
+            Toast.makeText(this , "Please enter Valid email" , Toast.LENGTH_SHORT).show();
+        } else if (meetingPlace.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Please choose rooms", Toast.LENGTH_SHORT).show();
+        } else {
+            apiService.createMeeting(meeting);
+            finish();
         }
+    }
 
     @Override
     public void onClick(View v) {
@@ -145,7 +147,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
         meetingPlace.setAdapter(adapter);
     }
 
-    public Calendar calendar () {
+    public Calendar calendar() {
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
@@ -156,7 +158,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        calendar.set(year, monthOfYear, dayOfMonth );
+                        calendar.set(year, monthOfYear, dayOfMonth);
                         meetingDate.getEditText().setText(format("dd/MM/yyyy", calendar));
                     }
                 }, year, month, day);
@@ -181,7 +183,7 @@ public class AddMeetingActivity extends AppCompatActivity implements View.OnClic
                             minPrecedes = "0";
                         }
                         meetingTime.getEditText().setText(String.format("%dh%s%d", hourOfDay, minPrecedes, minutes));
-                        }
+                    }
                 }, mHour, mMinute, true);
         timePickerDialog.show();
         return time;

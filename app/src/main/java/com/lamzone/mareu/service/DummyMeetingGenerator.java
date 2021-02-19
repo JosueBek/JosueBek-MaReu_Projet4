@@ -16,9 +16,9 @@ public abstract class DummyMeetingGenerator {
     }
 
     public static List<Meeting> DUMMY_MEETINGS = asList(
-            new Meeting(1, Color.BLUE, "Réunion A", "14h00" , "Peach", "maxime@lamzone.com", "15/03/2021"),
-            new Meeting(2, Color.MAGENTA, "Réunion B", "16h00",   "Mario", "paul@lamzone.com", "10/03/2021"),
-            new Meeting(3, Color.RED, "Réunion C", "19h00", "Luigi", "amandine@lamzone.com", "12/03/2021")
+            new Meeting(1, Color.BLUE, "Réunion A", "14h00" , "Peach", "maxime@lamzone.com, caroline@lamezone.com", "15/03/2021"),
+            new Meeting(2, Color.MAGENTA, "Réunion B", "16h00",   "Mario", "paul@lamzone.com, eric@lamezone.com", "10/03/2021"),
+            new Meeting(3, Color.RED, "Réunion C", "19h00", "Luigi", "amandine@lamzone.com, alain@lamezone.com", "12/03/2021")
     );
 
     static List<String> generateRooms () {

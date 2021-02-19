@@ -182,10 +182,9 @@ public class MeetingActivity extends AppCompatActivity implements SearchView.OnQ
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             apiService.getMeeting().clear();
             Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-            onRestart();
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
-
+            apiService.getMeeting();
         }
     }
 

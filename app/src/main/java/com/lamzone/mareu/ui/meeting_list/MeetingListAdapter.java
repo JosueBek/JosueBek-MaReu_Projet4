@@ -50,7 +50,8 @@ public class MeetingListAdapter extends RecyclerView.Adapter<ListMeetingViewHold
             public void onClick(View v) {
                 Context context = v.getContext();
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                String[] items = new String[]{"SUBJECT : " + meeting.getMeetingSubject(), "TIME : " + meeting.getTimeForTheMeeting(), "ROOMS : " + meeting.getMeetingPlace(), "DATE : " + meeting.getDate()};
+                String[] items = new String[]{"SUBJECT : " + meeting.getMeetingSubject(), "TIME : " + meeting.getTimeForTheMeeting(),
+                        "ROOMS : " + meeting.getMeetingPlace(), "DATE : " + meeting.getDate(), "PARTICIPANTS : " + meeting.getMeetingParticipants()};
                 builder.setTitle("Meeting");
                 builder.setIcon(R.drawable.ic_logo_lamezone);
                 builder.setItems(items, new DialogInterface.OnClickListener() {
